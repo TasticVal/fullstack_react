@@ -1,42 +1,67 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+/* Reset básico */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+body { background-color: #fdf2f8; color: #333; }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Contenedores Principales */
+.screen-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; padding: 20px; }
+.login-bg { background-color: #fce7f3; min-height: 100vh; }
+.app-layout { display: flex; flex-direction: column; height: 100vh; }
+.app-content { flex: 1; overflow-y: auto; padding-bottom: 80px; }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+/* Tarjetas (Cards) */
+.card { background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); width: 100%; max-width: 400px; margin-bottom: 1rem; }
+.login-card { text-align: center; }
+.product-card { display: flex; flex-direction: column; padding: 0; overflow: hidden; max-width: 100%; }
+.cart-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; }
 
-.card {
-  padding: 2em;
-}
+/* Grid de Productos (Catálogo) */
+.grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; padding: 1rem; }
+.product-img { width: 100%; height: 200px; object-fit: cover; }
+.product-info { padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
 
-.read-the-docs {
-  color: #888;
-}
+/* Textos y Títulos */
+.title { color: #db2777; font-size: 1.8rem; margin-bottom: 1rem; font-weight: bold; text-align: center; }
+.subtitle { color: #555; margin-bottom: 1.5rem; text-align: center; }
+.price { color: #db2777; font-weight: bold; font-size: 1.2rem; }
+.error-msg { color: red; font-size: 0.9rem; margin: 0.5rem 0; text-align: center; }
+
+/* Formularios */
+.form-col { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
+.input-field { padding: 0.8rem; border: 1px solid #fbcfe8; border-radius: 8px; font-size: 1rem; outline: none; }
+.input-field:focus { border-color: #db2777; box-shadow: 0 0 0 2px rgba(219, 39, 119, 0.2); }
+
+/* Botones */
+.btn { padding: 0.8rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; width: 100%; margin-top: 10px; }
+.btn-primary { background-color: #db2777; color: white; }
+.btn-primary:hover { background-color: #be185d; }
+.btn-secondary { background-color: #9333ea; color: white; }
+.btn-success { background-color: #22c55e; color: white; }
+.btn-link { background: none; border: none; color: #db2777; margin-top: 1rem; cursor: pointer; text-decoration: underline; width: 100%; }
+
+/* Botones Pequeños (Iconos) */
+.btn-icon { background: #f3f4f6; border: none; padding: 8px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.btn-icon:hover { background: #e5e7eb; }
+.btn-icon.delete { color: #ef4444; background: #fee2e2; }
+.btn-logout { background: #be185d; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-size: 0.8rem; }
+.btn-sm { width: auto; margin-top: 0; padding: 0.5rem 1rem; }
+
+/* Header Superior */
+.app-header { background: #db2777; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 10; }
+.user-info { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+
+/* Barra de Navegación Inferior */
+.app-nav { position: fixed; bottom: 0; width: 100%; background: white; border-top: 1px solid #eee; display: flex; justify-content: space-around; padding: 0.5rem; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); z-index: 10; }
+.app-nav button { background: none; border: none; color: #9ca3af; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; cursor: pointer; flex: 1; margin-top: 0; }
+.app-nav button.active { color: #db2777; transform: scale(1.1); font-weight: bold; }
+
+/* Badge del Carrito (Puntito rojo) */
+.nav-cart-wrapper { position: relative; flex: 1; display: flex; justify-content: center; }
+.badge { position: absolute; top: -5px; right: 25%; background: red; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center; }
+
+/* Utilidades Extra */
+.controls { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; }
+.empty-state { text-align: center; color: #888; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+.flex-center { display: flex; align-items: center; justify-content: center; gap: 10px; }
+.full-width { width: 100%; }
+.text-body { text-align: center; color: #666; line-height: 1.5; }
